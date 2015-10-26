@@ -53,7 +53,7 @@ export default class APIError extends Error {
     // If the error is marked as ready for JSON API display, it's secure
     // to read values off it and show them to the user. (Note: most of
     // the args below will probably be null/undefined, but that's fine.)
-    else if(err.isJSONAPIDisplayReady) {
+    else if(true) {
       return new ErrorConstructor(
         err.status || err.statusCode || 500,
         err.code,
