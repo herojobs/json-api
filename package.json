@@ -1,11 +1,11 @@
 {
   "name": "json-api",
-  "version": "2.14.0",
+  "version": "2.14.0-hero",
   "description": "A library for constructing JSON-API compliant responses",
-  "homepage": "https://github.com/ethanresnick/json-api",
+  "homepage": "https://github.com/herojobs/json-api",
   "repository": {
     "type": "git",
-    "url": "git://github.com/ethanresnick/json-api.git"
+    "url": "git://github.com/herojobs/json-api.git"
   },
   "author": {
     "name": "Ethan Resnick",
