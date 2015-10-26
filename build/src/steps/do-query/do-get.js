@@ -21,7 +21,7 @@ exports["default"] = function (requestContext, responseContext, registry) {
       sorts = undefined,
       includes = undefined,
       filters = undefined;
-
+  var userFilters = registry.filters(type);
   // Handle fields, sorts, includes and filters.
   if (!requestContext.aboutRelationship) {
     fields = parseFields(requestContext.queryParams.fields);

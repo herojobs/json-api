@@ -5,7 +5,7 @@ export default function(requestContext, responseContext, registry) {
   let type    = requestContext.type;
   let adapter = registry.dbAdapter(type);
   let fields, sorts, includes, filters;
-
+  let userFilters = registry.filters(type);
   // Handle fields, sorts, includes and filters.
   if(!requestContext.aboutRelationship) {
     fields = parseFields(requestContext.queryParams.fields);
@@ -13,6 +13,8 @@ export default function(requestContext, responseContext, registry) {
     // just support a "simple" filtering strategy for now.
     filters = requestContext.queryParams.filter &&
                 requestContext.queryParams.filter.simple;
+    filtersArray = [];
+    filtersArray.push(filters);
     includes = parseCommaSeparatedParam(requestContext.queryParams.include);
 
     if(!includes) {
