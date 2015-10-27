@@ -179,7 +179,8 @@ class APIController {
           response.primary, response.included,
           undefined, registry.urlTemplates(), request.uri
         ).get(true);
-      } else {
+      }
+      else {
         response.contentType = "text/plain";
       }
 
