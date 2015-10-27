@@ -42,31 +42,25 @@ exports["default"] = function (requestContext, responseContext, registry) {
       responseContext.status = 204;
     });
   } else {
-    var _ret = (function () {
-      var noClientIds = "Client-generated ids are not supported.";
-      (0, _utilTypeHandling.forEachResources)(primary, function (it) {
-        if (it.id) throw new _typesAPIError2["default"](403, undefined, noClientIds);
-      });
+    // let noClientIds = "Client-generated ids are not supported.";
+    // forEachResources(primary, (it) => {
+    //   if(it.id) throw new APIError(403, undefined, noClientIds);
+    // });
 
-      return {
-        v: adapter.create(type, primary).then(function (created) {
-          responseContext.primary = created;
-          responseContext.status = 201;
+    return adapter.create(type, primary).then(function (created) {
+      responseContext.primary = created;
+      responseContext.status = 201;
 
-          // We can only generate a Location url for a single resource.
-          if (created instanceof _typesResource2["default"]) {
-            var templates = registry.urlTemplates(created.type);
-            var template = templates && templates.self;
-            if (template) {
-              var templateData = _Object$assign({ "id": created.id }, created.attrs);
-              responseContext.headers.location = _urlTemplate2["default"].parse(template).expand(templateData);
-            }
-          }
-        })
-      };
-    })();
-
-    if (typeof _ret === "object") return _ret.v;
+      // We can only generate a Location url for a single resource.
+      if (created instanceof _typesResource2["default"]) {
+        var templates = registry.urlTemplates(created.type);
+        var template = templates && templates.self;
+        if (template) {
+          var templateData = _Object$assign({ "id": created.id }, created.attrs);
+          responseContext.headers.location = _urlTemplate2["default"].parse(template).expand(templateData);
+        }
+      }
+    });
   }
 };
 

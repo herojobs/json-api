@@ -28,10 +28,10 @@ export default function(requestContext, responseContext, registry) {
   }
 
   else {
-    let noClientIds = "Client-generated ids are not supported.";
-    forEachResources(primary, (it) => {
-      if(it.id) throw new APIError(403, undefined, noClientIds);
-    });
+    // let noClientIds = "Client-generated ids are not supported.";
+    // forEachResources(primary, (it) => {
+    //   if(it.id) throw new APIError(403, undefined, noClientIds);
+    // });
 
     return adapter.create(type, primary).then((created) => {
       responseContext.primary = created;
